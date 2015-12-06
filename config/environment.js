@@ -19,7 +19,8 @@ module.exports = function(environment) {
     },
 
     contentSecurityPolicy: {
-      'connect-src': "'self' http://localhost:3000"
+      'connect-src': "'self' http://localhost:3000",
+      'script-src': "'self' 'unsafe-inline'"
     }
   };
 
