@@ -7,33 +7,33 @@ export default Base.extend({
   // restore(data) {
   // },
 
-  authenticate(identification, password) {
+  authenticate (identification, password) {
     let _this = this;
     let data = { identification: identification, password: password };
-    return new Ember.RSVP.Promise(function(resolve, reject) {
-      _this.makeRequest(data).then(function(resp) {
-        Ember.run(function() {
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      _this.makeRequest(data).then((resp) => {
+        Ember.run(() => {
           resolve(resp);
         });
-      }, function(xhr) {
-        Ember.run(function() {
+      }, (xhr) => {
+        Ember.run(() => {
           reject(xhr.responseJSON || xhr.responseText);
         });
       });
     });
   },
 
-  makeRequest: function(data) {
+  makeRequest (data) {
     let url = this.serverTokenEndpoint;
-    return new Ember.RSVP.Promise(function(resolve, reject) {
+    return new Ember.RSVP.Promise((resolve, reject) => {
       Ember.$.ajax({
         url:        url,
         type:       'POST',
         data:       data,
         dataType:   'json',
-        success:    function(data, status, xhr) { resolve(data, status, xhr); },
-        error:      function(xhr, status, error) { reject(xhr, status, error); },
-        beforeSend: function(xhr, settings) {
+        success:    (data, status, xhr) => { resolve(data, status, xhr); },
+        error:      (xhr, status, error) => { reject(xhr, status, error); },
+        beforeSend: (xhr, settings) => {
           xhr.setRequestHeader('Accept', settings.accepts.json);
         }
       });

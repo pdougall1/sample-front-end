@@ -3,33 +3,33 @@ import moduleForAcceptance from 'sample-front-end/tests/helpers/module-for-accep
 
 moduleForAcceptance('Acceptance | login');
 
-test('visiting /login', function(assert) {
+test('visiting /login', (assert) => {
   visit('/login');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/login');
   });
 });
 
-test('filling out form', function(assert) {
+test('filling out form', (assert) => {
   visit('/login');
   fillIn('#identification', "dougs");
   fillIn('#password', "password");
   click('button.submit');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(find('.projects-section h1').text(), 'Projects');
     assert.equal(find('.menu a').text(), 'Logout');
   });
 });
 
-test('filling out form with bad data', function(assert) {
+test('filling out form with bad data', (assert) => {
   visit('/login');
   fillIn('#identification', "wrong@example.com");
   fillIn('#password', "password");
   click('button.submit');
 
-  andThen(function() {
+  andThen(() => {
     assert.notEqual(find('.projects-section h1').text(), 'Projects');
     assert.equal(find('.menu a').text(), 'Login');
   });

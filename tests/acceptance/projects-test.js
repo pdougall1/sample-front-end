@@ -3,18 +3,18 @@ import moduleForAcceptance from 'sample-front-end/tests/helpers/module-for-accep
 
 moduleForAcceptance('Acceptance | projects');
 
-test('visiting /projects', function(assert) {
+test('visiting /projects', (assert) => {
   visit('/projects');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(currentURL(), '/projects');
   });
 });
 
-test('the basic dom elements', function(assert) {
+test('the basic dom elements', (assert) => {
   visit('/projects');
 
-  andThen(function() {
+  andThen(() => {
     assert.equal(find('.projects-section h1').text(), 'Projects');
   });
 });
