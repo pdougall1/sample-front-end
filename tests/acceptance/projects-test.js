@@ -1,7 +1,7 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'sample-front-end/tests/helpers/module-for-acceptance';
+import authenticatedModuleForAcceptance from 'sample-front-end/tests/helpers/authenticated-module-for-acceptance';
 
-moduleForAcceptance('Acceptance | projects');
+authenticatedModuleForAcceptance('Acceptance | projects');
 
 test('visiting /projects', (assert) => {
   visit('/projects');
