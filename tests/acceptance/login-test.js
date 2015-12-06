@@ -23,10 +23,22 @@ test('filling out form', (assert) => {
   });
 });
 
-test('filling out form with bad data', (assert) => {
+test('filling out form with bad identifier', (assert) => {
   visit('/login');
   fillIn('#identification', "wrong@example.com");
   fillIn('#password', "password");
+  click('button.submit');
+
+  andThen(() => {
+    assert.notEqual(find('.projects-section h1').text(), 'Projects');
+    assert.equal(find('.menu a').text(), 'Login');
+  });
+});
+
+test('filling out form with bad password', (assert) => {
+  visit('/login');
+  fillIn('#identification', "dougs");
+  fillIn('#password', "bad-password");
   click('button.submit');
 
   andThen(() => {
