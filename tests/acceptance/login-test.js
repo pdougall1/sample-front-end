@@ -46,3 +46,16 @@ test('filling out form with bad password', (assert) => {
     assert.equal(find('.menu a').text(), 'Login');
   });
 });
+
+
+test('filling out form', (assert) => {
+  visit('/login');
+  fillIn('#identification', "dougs");
+  fillIn('#password', "password");
+  click('button.submit');
+  click('.menu a');
+
+  andThen(() => {
+    assert.equal(find('.menu a').text(), 'Login');
+  });
+});
